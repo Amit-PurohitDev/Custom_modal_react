@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Modal from './modal/modal';
+
+const RandomComponent = () => {
+  const [openModal, setOpenModal] = useState(false)
+  return(
+    <div>
+      <h1>Click to open a Modal</h1>
+      <button className='openModalBtn' onClick={ () => setOpenModal(true) }>CLICK TO OPEN</button>
+      {openModal && <Modal  closeModal={setOpenModal} 
+                            title="Tile section"
+                            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore in reiciendis voluptas omnis enim. Impedit atque repellendus tenetur asperiores dignissimos ?"
+                            cancle="CANCLE"
+                            continue="CONTINUE"
+      />}
+    </div>
+  )
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RandomComponent />
     </div>
   );
 }
